@@ -1,42 +1,26 @@
-# Beat Juggling
+# Beat Juggling · ANKS Labs
 
-Un VST3 (instrument) pour Ableton qui automatise le **passe-passe** : deux platines virtuelles A et B jouent la même phrase (ou deux sons différents). Elles se relancent en alternance depuis leur point de départ, suivant un programme rythmique calé sur le tempo d'Ableton.
+Un VST3 (instrument) pour Ableton qui joue du **passe-passe séquencé** : on pose deux sons sur deux platines, on prépare des séquences de blocs, on lance la lecture dans Ableton, et le plugin enchaîne les passes d'une platine à l'autre, en boucle et calé sur le tempo.
 
-## Utilisation rapide
-1. Pose **Beat Juggling** sur une piste MIDI dans Ableton.
-2. Glisse un fichier WAV sur une platine, ou utilise **Charger un son...**. Si la platine B est vide, elle reçoit le même son.
-3. Dans la forme d'onde, sélectionne la phrase : une mesure, deux mesures, une demi-mesure...
-4. Règle le **Départ A** et le **Départ B** en 1/16. Par exemple, A part sur la grosse caisse (0) et B sur la caisse claire (4).
-5. Écris le programme, puis lance la lecture dans Ableton.
+## Le principe
+- **Deux platines, Gauche et Droite.** Glisse un son sur une platine, ou clique sur « Charger un son… ». Si l'autre platine est vide, elle reçoit le même son.
+- **4 patterns.** Chacun a sa longueur : 1, 2, 4, 8, 16 ou 32 mesures. Un clic sur un pattern l'ouvre pour l'éditer et le fait enchaîner à la fin du pattern en cours, pile dans le temps.
+- **Des blocs**, joués l'un après l'autre :
+  - **Lecture** : une platine, une zone du son (départ et durée), un sens (avant ou arrière).
+  - **Mouvement** : stop, scratch, backspin, démarrage, roll. La durée et le réglage se font au potard. Par défaut, le mouvement part de là où le bloc précédent s'est arrêté (« Suite du bloc »).
+- **Pattern pas plein** : la fin est un silence. **Pattern qui déborde** : le dernier bloc est raccourci.
 
-## Forme d'onde
-- Molette : zoom autour de la souris. Maj + molette : défilement. Clic droit + glisser : déplacer la vue.
-- Glisser : sélectionner. Tirer les bords rouges : ajuster la sélection.
-- Double-clic : sélectionne la mesure sous la souris (Maj + double-clic : le temps).
-- Ctrl + clic : place le départ de la platine. Alt + clic : place le 1er temps de la grille.
-- **Caler le BPM** : indique ce que fait ta sélection (1 temps, 1 mesure...), et le plugin calcule le BPM du son.
-- La barre du bas affiche tout le fichier. Clique ou glisse dessus pour te déplacer.
+## Le vinyle (forme d'onde)
+- Les zones des blocs de la platine sont dessinées. Le bloc sélectionné est en rouge.
+- Glisser une zone la déplace, tirer ses bords change le départ ou la durée. Tout est calé sur la grille en doubles-croches.
+- Double-clic : place le bloc sur la mesure sous la souris (Maj : sur le temps). Ctrl + clic : place le départ à cet endroit.
+- Molette : zoom. Maj + molette : défilement. Clic droit + glisser : déplacer la vue. La barre du bas montre tout le son.
+- **Caler le BPM d'un morceau** : Alt + glisser dessine une zone verte. Indique ce qu'elle dure (« Vert = 1 mesure »…), puis clique sur « Caler le BPM ». Le BPM est calculé et le 1er temps est placé au début de la zone. Alt + clic seul place le 1er temps.
 
-## Programme
-| Code | Effet |
-|---|---|
-| `1` `1/2` `3/4` `1.5` | durée d'un segment en temps |
-| `x3` | répète le segment, ou le groupe, précédent |
-| `3+2` | groupe : 3 temps puis 2 temps |
-| `A1` `B1/2` | force la platine (sinon : alternance A, B, A...) |
-| `_1` | silence |
-| `@4` | départ forcé, en 1/16 depuis le début de la sélection |
-| `r` | reverse |
-| `s` | stop platine (ralentit jusqu'à l'arrêt) |
-| `w` | démarrage platine |
-| `k` | backspin |
-| `z` | scratch |
-| `*4` | roll (rejoue 4 fois le début du segment) |
-| `c` | continue (la platine reprend où elle s'était arrêtée) |
-
-Exemple : `1 x3 | 1/2 x5 | 3/2 x3 1s`
-
-**Sync tempo** activé : la boucle est jouée à la vitesse qui la cale sur le tempo d'Ableton, et la hauteur suit, comme un vinyle.
+## Positions et durées
+- Départ : `mesure.temps.double-croche`, par exemple `9.1.1`.
+- Durée : `mesures.temps.doubles-croches`, par exemple `1.2.0` = une mesure et demie, `0.1.0` = un temps.
+- Double-clic sur la valeur sous un potard pour la taper.
 
 ## Compilation
 Chaque envoi sur `main` lance la compilation Windows dans GitHub Actions. Le VST3 se télécharge dans l'onglet **Actions**, artefact `BeatJuggling-VST3-Windows`. Copie le dossier `Beat Juggling.vst3` dans `C:\Program Files\Common Files\VST3`.

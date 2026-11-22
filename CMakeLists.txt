@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(BEAT_JUGGLING VERSION 0.1.0)
+project(BEAT_JUGGLING VERSION 0.2.0)
 
 include(FetchContent)
 FetchContent_Declare(JUCE
@@ -9,17 +9,17 @@ FetchContent_Declare(JUCE
 FetchContent_MakeAvailable(JUCE)
 
 juce_add_plugin(BeatJuggling
-    COMPANY_NAME "Perso"
+    COMPANY_NAME "ANKS Labs"
     IS_SYNTH TRUE
     NEEDS_MIDI_INPUT TRUE
-    PLUGIN_MANUFACTURER_CODE Pers
+    PLUGIN_MANUFACTURER_CODE Anks
     PLUGIN_CODE BjPp
     VST3_CATEGORIES Instrument Sampler
     FORMATS VST3 Standalone
     PRODUCT_NAME "Beat Juggling")
 
 target_sources(BeatJuggling PRIVATE
-    Source/Program.h
+    Source/Pattern.h
     Source/PluginProcessor.h
     Source/PluginProcessor.cpp
     Source/PluginEditor.h
