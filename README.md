@@ -2,6 +2,22 @@
 
 Un VST3 (instrument) pour Ableton qui joue du **passe-passe séquencé** : on pose deux sons sur deux platines, on prépare des séquences de blocs, on lance la lecture dans Ableton, et le plugin enchaîne les passes d'une platine à l'autre, en boucle et calé sur le tempo.
 
+## ⬇ TÉLÉCHARGER ET INSTALLER — DOWNLOAD
+
+[![TÉLÉCHARGER LA DERNIÈRE VERSION](https://img.shields.io/github/v/release/olivershadd-star/BEAT-JUGGLING?include_prereleases&sort=date&display_name=tag&style=for-the-badge&logo=github&logoColor=F7FAFF&label=T%C3%89L%C3%89CHARGER&labelColor=10151E&color=EF343E)](../../releases/latest) [![TOUTES LES VERSIONS](https://img.shields.io/badge/TOUTES_LES-VERSIONS-F5C343?style=for-the-badge&labelColor=10151E)](../../releases)
+
+1. Clique sur **TÉLÉCHARGER**, puis, dans la rubrique *Assets*, télécharge `BEAT-JUGGLING-Windows-x64-X.Y.Z.zip` (X.Y.Z = numéro de version : prends toujours le plus grand).
+2. Clic droit sur le ZIP → **Extraire tout**.
+3. **Plugin pour Ableton** : copie le dossier `VST3\Beat Juggling.vst3` dans `C:\Program Files\Common Files\VST3`.
+4. Dans Live : **Préférences → Plug-ins → Dossier système VST3 = On**, puis **Relancer l'analyse**.
+5. C'est un **instrument** : pose-le sur une piste MIDI. **Sans Ableton** : lance `Application\Beat Juggling.exe`.
+
+*Windows peut afficher « Windows a protégé votre ordinateur » : clique sur **Informations complémentaires → Exécuter quand même** (programme gratuit non signé, c'est normal).*
+
+**EN —** Click **DOWNLOAD**, get `BEAT-JUGGLING-Windows-x64-X.Y.Z.zip` from *Assets*, extract it and copy `VST3\Beat Juggling.vst3` to `C:\Program Files\Common Files\VST3`, then rescan plug-ins. Or run `Application\Beat Juggling.exe` without any DAW.
+
+---
+
 ## Le principe
 - **Deux platines, Gauche et Droite.** Glisse un son sur une platine, ou clique sur « Charger un son… ». Si l'autre platine est vide, elle reçoit le même son.
 - **4 patterns.** Chacun a sa longueur : 1, 2, 4, 8, 16 ou 32 mesures. Un clic sur un pattern l'ouvre pour l'éditer et le fait enchaîner à la fin du pattern en cours, pile dans le temps.
@@ -23,4 +39,4 @@ Un VST3 (instrument) pour Ableton qui joue du **passe-passe séquencé** : on po
 - Double-clic sur la valeur sous un potard pour la taper.
 
 ## Compilation
-Chaque envoi sur `main` lance la compilation Windows dans GitHub Actions. Le VST3 se télécharge dans l'onglet **Actions**, artefact `BeatJuggling-VST3-Windows`. Copie le dossier `Beat Juggling.vst3` dans `C:\Program Files\Common Files\VST3`.
+Chaque envoi sur `main` lance la compilation Windows dans GitHub Actions. Quand le numéro de version change dans `CMakeLists.txt` (`project(BEAT_JUGGLING VERSION …)`), le ZIP numéroté est publié tout seul dans **Releases** (voir « Télécharger » plus haut).
